@@ -1,14 +1,15 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
+
 const App =() => {
-  const [INSERT CODE HERE, INSERT CODE HERE] = useState ([])
+  const [catPics, setCatPics] = useState ([])
 
   const fetchData = async () => {
-    const apiRequest = await fetch (" ")  /*INSERT API URL IN THE BRACKETS!*/ 
+    const apiRequest = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10")
     const apiData = await apiRequest.json()
     
-    setpokeChar(apiData)
+    setCatPics(apiData)
 
     console.log(apiRequest)
     console.log(apiData)
@@ -21,11 +22,12 @@ const App =() => {
   return (
     <div>
      
-    {INSERT.map((INSERT CODE)=>{
-      
+    {catPics.map((singleCat)=>{
+      console.log(singleCat)
       return (
         <div>
-        
+          <img key="photos" alt="cat for sale" src={singleCat.url}/>
+          <p>{singleCat.id}</p>
         </div>
       )
     })}
