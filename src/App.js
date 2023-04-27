@@ -92,13 +92,21 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 
+
+
+
+
+
 const App = () => {
   const [catPics, setCatPics] = useState([]);
-
-  const fetchData = async () => {
-    const apiRequest = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10&api_key=enlRzO8WCB2SONijKb8GfoS6ehYsdi7v0g6QAgCpIvb8fPEybmyOPDHeK9704j0t");
-    const apiData = await apiRequest.json();
+const fetchData = async () => {
+  
     
+  const apiRequest = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10&api_key=enlRzO8WCB2SONijKb8GfoS6ehYsdi7v0g6QAgCpIvb8fPEybmyOPDHeK9704j0t");
+  const apiData = await apiRequest.json();
+
+  
+
     // Save the fetched cat images to local storage
     localStorage.setItem('catPics', JSON.stringify(apiData));
     
@@ -107,6 +115,8 @@ const App = () => {
     console.log(apiData);
   };
 
+ 
+   
   useEffect(() => {
     // Check if the cat images exist in local storage
     const localCatPics = localStorage.getItem('catPics');
@@ -135,4 +145,9 @@ const App = () => {
   );
 };
 
+
+
 export default App;
+
+
+
