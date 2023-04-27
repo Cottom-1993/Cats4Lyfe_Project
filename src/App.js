@@ -90,8 +90,17 @@
 // export default App;
 
 import './App.css';
+import  Modal  from './Modal'
 import { useState, useEffect } from 'react';
 
+// import {faker, animal, cat} from '@faker-js/faker';
+
+
+const App =() => {
+  const [catPics, setCatPics] = useState ([])
+  // const catName = faker.animal.cat(catName);
+  // const catBreed = faker.animal.cat(catBreed);
+  // const catAge = faker.animal.cat(catAge);
 
 
 
@@ -115,8 +124,12 @@ const fetchData = async () => {
     console.log(apiData);
   };
 
+  const [showModal, setshowModal] = useState(false)
+
+
  
    
+
   useEffect(() => {
     // Check if the cat images exist in local storage
     const localCatPics = localStorage.getItem('catPics');
@@ -130,24 +143,44 @@ const fetchData = async () => {
 
   return (
     <div>
+
+    
+    {catPics.map((singleCat, index)=>{
+      
+      return (
+        <div key={index}>
+          <img key="photos" alt="cat for sale" src={singleCat.url}/>
+
      
     {catPics.map((singleCat, index) => {
       console.log(singleCat);
       return (
         <div key={singleCat.id}>
           <img alt="cat for sale" src={singleCat.url} className={`cat-pic-${index}`} />
+
           <p>{singleCat.id}</p>
+          <button className="openModal" onClick={()=>setshowModal(true)}>Add to basket</button>
+          
+
         </div>
       );
     })}
 
+    <div>
+   
+    </div>
+      <div id="ModalBanner">
+          {showModal && <Modal showModal={showModal} />}
+          </div>
     </div>
   );
 };
 
 
 
+
 export default App;
+
 
 
 
