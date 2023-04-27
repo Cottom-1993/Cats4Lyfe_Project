@@ -10,15 +10,25 @@
     border-radius: 30%;
     cursor: grab;
     object-fit: cover;
-    width: 200px;
-    height: 200px;
+    width: 210px;
+    height: 210px;
   }
   
-  div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-   
+  #catContainer {
+   display: flex;
+   background-color: aqua;
+   height: 250px;
+   width: 250px;
+   overflow: hidden;
+   margin: 0;
+   padding: 0;
+}
+
+.catItem{
+   height: 100%;
+   width: 100%;
+   background-color: brown;
+   transition: all 0.3s;
 }
 
 #ModalBanner {
