@@ -112,25 +112,28 @@ const [catPics, setCatPics] = useState([]);
 const [showModal, setshowModal] = useState(false);
 const [currentIndex, setCurrentIndex] = useState(0);
 
-const catName = faker.name.fullName();
-const catBreed = faker.animal.cat();
-const catSex = faker.name.sex();
-const catBirthdate = faker.commerce.price(1, 9, 0)
-const catPrice = faker.commerce.price(350, 1000, 0, '£');
-console.log(catName, catBreed, catSex, catBirthdate, catPrice);
 
 const fetchData = async () => {
   const apiRequest = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10&api_key=enlRzO8WCB2SONijKb8GfoS6ehYsdi7v0g6QAgCpIvb8fPEybmyOPDHeK9704j0t");
   const apiData = await apiRequest.json();
 
+  // The below code is being used to store the fakify data from the api and make it specific to the image
+  const catData = apiData.map((catInfo)=>{
+
+  return {
+    url: catInfo.url,
+    name: faker.name.fullName(),
+    breed: faker.animal.cat(),
+    gender: faker.name.sex(),
+    price: faker.commerce.price(350, 1000, 0, '£'),
+    birthday: faker.commerce.price(1, 9, 0)
+  }
+  })
   
-
      // Save the fetched cat images to local storage
-    localStorage.setItem('catPics', JSON.stringify(apiData));
+    localStorage.setItem('catPics', JSON.stringify(catData));
     
-    setCatPics(apiData);
-
-    console.log(apiData);
+    setCatPics(catData);
   };
 
   useEffect(() => {
@@ -163,12 +166,11 @@ const fetchData = async () => {
 
   return (
     <div>
-      <div>
-          <h1 id='cats4lifeheader'>Cats4Life</h1>
-       </div>
+   
 
-       <div>
-          <img src={Cats4lifeLogo}></img>
+       <div id='Cats4lifelogo'>
+       {/* <h1 id='cats4lifeheader'>Cats4Life</h1> */}
+        <img src={Cats4lifeLogo}></img>
         </div>
 
        <div id='catsection'>
@@ -176,24 +178,25 @@ const fetchData = async () => {
           {catPics.map((singleCat, index) => {
             console.log(singleCat);
             return (
-              <div className='catItem' key={singleCat.id} style={{transform:`translateX(-${currentIndex * 100}%)`}}>
+              <div className='catItem' key={index} style={{transform:`translateX(-${currentIndex * 100}%)`}}>
                 <img alt="cat for sale" src={singleCat.url} className={`cat-pic-${index}`} />
-                <p>{singleCat.id}</p>
-                <p>Name: {catName}</p>
-                <p>Breed: {catBreed}</p>
-                <p>Gender: {catSex}</p>
-                <p> Age: {catBirthdate}</p>
-                <p>Price: {catPrice}</p>
+                <p>Name: {singleCat.name}</p>
+                <p>Breed: {singleCat.breed}</p>
+                <p>Gender: {singleCat.gender}</p>
+                <p> Age: {singleCat.birthday}</p>
+                <p>Price: {singleCat.price}</p>
                 <button className="openModal" onClick={()=>setshowModal(true)}>Add to basket</button>
               </div>
             );
           })}
         </div>
       </div>
+      
+      
       <div id='buttonarrow'>
-
-      <button onClick={carouselScrollRight}> &#8594; </button>
       <button onClick={carouselScrollLeft}> &#8592; </button>
+      <button onClick={carouselScrollRight}> &#8594; </button>
+      
       </div>
       <div id="ModalBanner">
           {showModal && <Modal showModal={showModal} />}
