@@ -1,4 +1,8 @@
-
+body{
+   background-image: url(https://cdn.wallpapersafari.com/80/42/Fl5JqT.jpg);
+   background-repeat: no-repeat;
+   background-size: cover;
+}
  img { 
     display: flex;
     justify-content: center;
@@ -27,7 +31,7 @@
 .catItem{
    height: 100%;
    width: 100%;
-   background-color: brown;
+   background-color: grey;
    transition: all 0.3s;
 }
 
@@ -40,3 +44,24 @@
 }
  
  
+#buttonarrow {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   object-fit: cover;
+   
+}
+
+#cats4lifeheader{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   object-fit: cover;
+   font-size: 400%;
+}
+
+#catsection{
+ display: flex;
+ justify-content: center;
+}
+

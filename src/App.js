@@ -102,9 +102,9 @@ import {faker, animal, cat} from '@faker-js/faker';
 
 
  
-  const catName = faker.animal.cat(catName);
-  const catBreed = faker.animal.cat(catBreed);
-  const catAge = faker.animal.cat(catAge);
+  // const catName = faker.animal.cat(catName);
+  // const catBreed = faker.animal.cat(catBreed);
+  // const catAge = faker.animal.cat(catAge);
 
 
 const App = () => {
@@ -115,6 +115,8 @@ const [currentIndex, setCurrentIndex] = useState(0);
 const fetchData = async () => {
   const apiRequest = await fetch ("https://api.thecatapi.com/v1/images/search?limit=10&api_key=enlRzO8WCB2SONijKb8GfoS6ehYsdi7v0g6QAgCpIvb8fPEybmyOPDHeK9704j0t");
   const apiData = await apiRequest.json();
+
+  
 
      // Save the fetched cat images to local storage
     localStorage.setItem('catPics', JSON.stringify(apiData));
@@ -135,6 +137,7 @@ const fetchData = async () => {
     }
   }, [] );
 
+  // the below code is what actions the corousel system to allow you to use arrows to go forward and back on the images
   const carouselScrollRight = () => {
     if (currentIndex === catPics.length-1){
       setCurrentIndex(0)
@@ -153,20 +156,28 @@ const fetchData = async () => {
 
   return (
     <div>
-      <div id="catContainer">
-    {catPics.map((singleCat, index) => {
-      console.log(singleCat);
-      return (
-        <div className='catItem' key={singleCat.id} style={{transform:`translateX(-${currentIndex * 100}%)`}}>
-          <img alt="cat for sale" src={singleCat.url} className={`cat-pic-${index}`} />
-          <p>{singleCat.id}</p>
-          <button className="openModal" onClick={()=>setshowModal(true)}>Add to basket</button>
+      <div>
+          <h1 id='cats4lifeheader'>Cats4Life</h1>
+       </div>
+
+       <div id='catsection'>
+        <div id="catContainer">
+          {catPics.map((singleCat, index) => {
+            console.log(singleCat);
+            return (
+              <div className='catItem' key={singleCat.id} style={{transform:`translateX(-${currentIndex * 100}%)`}}>
+                <img alt="cat for sale" src={singleCat.url} className={`cat-pic-${index}`} />
+                <p>{singleCat.id}</p>
+                <button className="openModal" onClick={()=>setshowModal(true)}>Add to basket</button>
+              </div>
+            );
+          })}
         </div>
-      );
-      })}
       </div>
+      <div id='buttonarrow'>
       <button onClick={carouselScrollRight}> &#8594; </button>
       <button onClick={carouselScrollLeft}> &#8592; </button>
+      </div>
       <div id="ModalBanner">
           {showModal && <Modal showModal={showModal} />}
       </div>
@@ -174,7 +185,9 @@ const fetchData = async () => {
   );
 };
 
+<div id='websiteLogo'>
 
+</div>
 
 
 export default App;
