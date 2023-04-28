@@ -1,67 +1,72 @@
 body{
-   background-image: url(https://cdn.wallpapersafari.com/80/42/Fl5JqT.jpg);
-   background-repeat: no-repeat;
-   background-size: cover;
-}
- img { 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    margin: 10px;
-    border: 10px solid black;
-    background-color: aliceblue;
-    border-radius: 30%;
-    cursor: grab;
-    object-fit: cover;
-    width: 210px;
-    height: 210px;
-  }
-  
-  #catContainer {
+background-image: url(https://cdn.wallpapersafari.com/80/42/Fl5JqT.jpg);
+background-repeat: no-repeat;
+background-size: cover; 
+   }
+
+img {
    display: flex;
-   background-color: aqua;
-   height: 250px;
+   justify-content: center;
+   align-items: center;
+   height: auto;
+   margin: 10px;
+   border: 10px solid black;
+   background-color: aliceblue;
+   border-radius: 30%;
+   cursor: grab;
+   object-fit: cover;
+   width: 210px;
+   height: 210px;
+   }
+
+   #catContainer {
+   display: flex;
+   background-color: aqua; 
+   height: 500px;
    width: 250px;
    overflow: hidden;
    margin: 0;
    padding: 0;
-}
-
-.catItem{
+   }
+   
+   
+   .catItem{
    height: 100%;
    width: 100%;
    background-color: grey;
    transition: all 0.3s;
-}
-
-#ModalBanner {
+   }
+   
+   
+   #ModalBanner {
    display: flex;
    align-items: flex-end;
    flex-direction: column;
    height: 100%;
+   }
    
-}
- 
- 
-#buttonarrow {
+   #buttonarrow {
    display: flex;
    justify-content: center;
    align-items: center;
    object-fit: cover;
+   }
    
-}
-
-#cats4lifeheader{
+   
+   
+   #cats4lifeheader{
    display: flex;
    justify-content: center;
    align-items: center;
    object-fit: cover;
    font-size: 400%;
-}
-
-#catsection{
- display: flex;
- justify-content: center;
-}
-
+   }
+   
+   
+   #catsection{
+   display: flex;
+   justify-content: center;
+   }
+   
+   
+   
