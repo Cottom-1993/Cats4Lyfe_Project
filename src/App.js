@@ -183,7 +183,7 @@ const fetchData = async () => {
                 <p>Name: {singleCat.name}</p>
                 <p>Breed: {singleCat.breed}</p>
                 <p>Gender: {singleCat.gender}</p>
-                <p> Age: {singleCat.birthday}</p>
+                <p>Age: {singleCat.birthday}</p>
                 <p>Price: {singleCat.price}</p>
                 <button className="openModal" onClick={()=>setshowModal(true)}>Add to basket</button>
               </div>
